@@ -1,0 +1,11 @@
+Dereck Short Distance--------------135111	
+Joey Short Distance----------------13521
+Patrick Short Distance-------------135246
+Tyler Short Distance---------------135328
+Corey Short Distance---------------135431
+
+Dereck Long Distance---------------135616
+Joey Long Distance-----------------13577
+Patrick Long Distance--------------13581
+Tyler Long Distance----------------135851
+Corey Long Distance----------------135944

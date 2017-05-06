@@ -1,0 +1,18 @@
+#! /bin/bash
+
+for file in "${@}"
+
+do
+	starttime=$(cat ${file} | head -n 2 | tail -n 1 | cut -f 1 -d " ")
+
+	xavg=$(cat ${file} | gawk -v x="${starttime}" '$1 < x + 10000, NF > 1 {print $2}' | tail -n +2 | ./avg.py)
+
+	xstdev=$(cat ${file} | gawk -v x="${starttime}" '$1 < x + 10000, NF > 1 {print $2}' | tail -n +2 | ./stddev.py)
+
+	yavg=$(cat ${file} | gawk -v x="${starttime}" '$1 < x + 10000,NF > 1 {print $3}' | tail -n +2 | ./avg.py)
+
+	ystdev=$(cat ${file} | gawk -v x="${starttime}" '$1 < x + 10000,NF > 1 {print $3}' | tail -n +2 | ./stddev.py)
+
+echo "${file}  ${xavg}  ${xstdev}  ${yavg}  ${ystdev}"
+
+done | column -t

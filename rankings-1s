@@ -1,0 +1,36 @@
+#! /bin/bash
+
+cat log.txt
+echo "---------"
+
+echo "--One Second Rankings--"
+echo "X STANDARD DEVIATION"
+for file in "${@}"
+
+do
+./statline-1s ${file}
+done | column -t | sort -n -k 3
+
+echo "----------"
+
+echo "Y STANDARD DEVIATION"
+for file in "${@}"
+
+do
+./statline-1s ${file}
+done | column -t | sort -n -k 5
+
+echo "----------"
+
+echo "TOTAL STANDARD DEVIATION"
+
+for file in "${@}"
+
+do
+./totstd1s ${file}
+done | column -t | sort -n -k 2
+
+echo "----------"
+
+cat Winner.txt
+
