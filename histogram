@@ -1,0 +1,12 @@
+#! /bin/bash
+
+n=$(echo "1")
+
+for file in "${@}"
+
+do
+
+./TotDis ${file} | ./clat/src/hist | ./clat/src/plot -r "set term png; set output 'graph-${n}.png'; set xlabel 'Distance from Mean (pixels)'; set ylabel 'Number of Occurances'; set title '${file}'; unset key; set style fill solid" -m "with boxes"
+
+n=$(echo "${n} + 1" | bc)
+done

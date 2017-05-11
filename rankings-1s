@@ -27,8 +27,8 @@ echo "TOTAL STANDARD DEVIATION"
 for file in "${@}"
 
 do
-./totstd1s ${file}
-done | column -t | sort -n -k 2
+./statline-1s ${file}
+done | column -t | sort -n -k 6
 
 echo "----------"
 

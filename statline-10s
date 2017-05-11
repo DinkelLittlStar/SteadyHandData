@@ -13,6 +13,8 @@ do
 
 	ystdev=$(cat ${file} | gawk -v x="${starttime}" '$1 < x + 10000,NF > 1 {print $3}' | tail -n +2 | ./stddev.py)
 
-echo "${file}  ${xavg}  ${xstdev}  ${yavg}  ${ystdev}"
+	totstd=$(echo "${xstdev} + ${ystdev}" | bc | ./sqrt.py) 
+
+echo "${file}  ${xavg}  ${xstdev}  ${yavg}  ${ystdev} ${totstd}\\\\"
 
 done | column -t
